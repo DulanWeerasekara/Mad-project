@@ -32,6 +32,7 @@ class HotelForm : Fragment() {
 
 
     ): View? {
+        //
         // Inflate the layout for this fragment
         binding=FragmentHotelFormBinding.inflate(layoutInflater)
         return binding.root
