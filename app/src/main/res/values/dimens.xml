@@ -2,7 +2,7 @@
 <resources>
     <dimen name="HR_title">34sp</dimen>
     <dimen name="HR_items"> 16sp</dimen>
-    <dimen name="HR_listNames">14sp</dimen>
+    <dimen name="HR_listNames">19sp</dimen>
     <dimen name="hotelbookingtitle">40dp</dimen>
     <dimen name="hotelbooking_itemsize">20sp</dimen>
     <dimen name="Hotelloging_titleSize">40sp</dimen>

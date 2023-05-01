@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.drawToBitmap
+import com.bumptech.glide.Glide
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
@@ -80,6 +81,7 @@ class hotelItem : AppCompatActivity() {
         hotelListPhonetv=findViewById(R.id.hotelListPhonetv)
         hotelListPricetv=findViewById(R.id.hotelListPricetv)
         hotelListDistricttv = findViewById(R.id.hotelListDistricttv)
+        hotelListImagetv=findViewById(R.id.hotelListImagetv)
         btnUpdate=findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
 
@@ -94,6 +96,12 @@ class hotelItem : AppCompatActivity() {
         hotelListPhonetv.text=intent.getStringExtra("hotelPhone")
         hotelListPricetv.text=intent.getStringExtra("hotelPrice")
         hotelListDistricttv.text=intent.getStringExtra("hotelDistrict")
+        val hotelImageUrl = intent.getStringExtra("hotelImage")
+        Glide.with(this)
+            .load(hotelImageUrl)
+            .into(hotelListImagetv)
+
+
 
 
 
@@ -120,6 +128,7 @@ class hotelItem : AppCompatActivity() {
         val hotelPhone=mDialogView.findViewById<EditText>(R.id.hotelPhone)
         val hotelPrice=mDialogView.findViewById<EditText>(R.id.hotelPrice)
         val hotelDistrict=mDialogView.findViewById<EditText>(R.id.hotelDistrict)
+        val btnSelectImage = mDialogView.findViewById<Button>(R.id.btnSelectImage)
 
         val btnUpdateData=mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
@@ -132,11 +141,19 @@ class hotelItem : AppCompatActivity() {
         hotelPrice.setText(intent.getStringExtra("hotelPrice").toString())
         hotelDistrict.setText(intent.getStringExtra("hotelDistrict").toString())
 
+
+
         mDialog.setTitle("Update")
 
 
         val alertDialog=mDialog.create()
         alertDialog.show()
+        btnSelectImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, 1)
+        }
+
 
         btnUpdateData.setOnClickListener {
             updateHotelData(
@@ -176,7 +193,16 @@ class hotelItem : AppCompatActivity() {
         dbRef.setValue(hoteldata)
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            val imageUri = data.data
+            hotelListImagetv.setImageURI(imageUri)
+        }
 
 
+
+
+    }
 
 }

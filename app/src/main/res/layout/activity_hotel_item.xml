@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_200"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
 
@@ -30,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
@@ -47,9 +50,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Hotel Name"
+                        android:text="Name"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textSize="25sp" />
 
                 </LinearLayout>
 
@@ -63,9 +67,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -80,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
@@ -94,9 +99,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Hotel Address"
+                        android:text="Address"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textSize="25sp" />
 
                 </LinearLayout>
 
@@ -110,10 +116,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -130,6 +136,7 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:layout_marginTop="10dp"
 
                 >
 
@@ -143,9 +150,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Email"
+                        android:textStyle="bold"
+                        android:text="Email "
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
 
                         />
@@ -162,10 +170,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -183,6 +191,7 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:layout_marginTop="10dp"
 
                 >
 
@@ -195,11 +204,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textStyle="bold"
 
                         android:gravity="center"
                         android:text="Phone"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
 
                         />
@@ -216,10 +226,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -236,6 +246,7 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:layout_marginTop="10dp"
 
                 >
 
@@ -250,9 +261,10 @@
                         android:layout_gravity="center"
 
                         android:gravity="center"
+                        android:textStyle="bold"
                         android:text="price"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
 
                         />
@@ -269,10 +281,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -288,6 +300,8 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:layout_marginTop="10dp"
+
 
                 >
 
@@ -303,8 +317,9 @@
 
                         android:gravity="center"
                         android:text="District"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
 
                         />
@@ -321,10 +336,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="15sp"
+                        android:textSize="25sp"
 
                         />
 
@@ -341,20 +356,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+
+                android:layout_marginLeft="30dp"
                 android:text="Update" />
 
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
                 android:text="Delete" />
         </LinearLayout>
     </LinearLayout>

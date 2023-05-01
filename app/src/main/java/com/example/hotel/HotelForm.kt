@@ -21,6 +21,7 @@ import com.example.hotel.databinding.FragmentHotelFormBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
 import java.net.URI
 
@@ -39,6 +40,7 @@ class HotelForm : Fragment() {
 
     lateinit var dataBase: DatabaseReference
     private lateinit var binding: FragmentHotelFormBinding
+    private lateinit var storageReference: StorageReference
 
 
     override fun onCreateView(
@@ -55,6 +57,7 @@ class HotelForm : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        storageReference = FirebaseStorage.getInstance().reference
 
         var myBundle = arguments
         hotelName = myBundle?.getString("hotelName").toString()
@@ -77,14 +80,20 @@ class HotelForm : Fragment() {
 //        }
 
 
+//        binding.uploadSomePicturesButton.setOnClickListener {
+//
+//            var myFileIntent = Intent(Intent.ACTION_GET_CONTENT)
+//            myFileIntent.setType("image/*")
+//            ActivityResultLauncher.launch(myFileIntent)
+//        }
         binding.uploadSomePicturesButton.setOnClickListener {
-
-            var myFileIntent = Intent(Intent.ACTION_GET_CONTENT)
+            val myFileIntent = Intent(Intent.ACTION_GET_CONTENT)
             myFileIntent.setType("image/*")
-            ActivityResultLauncher.launch(myFileIntent)
+            resultLauncher.launch(myFileIntent)
         }
 
         binding.hotelRegButton.setOnClickListener {
+
 
 
             hotelName = binding.hotelName.text.toString()
@@ -118,7 +127,9 @@ class HotelForm : Fragment() {
                         android.widget.Toast.LENGTH_SHORT
                     ).show()
 
-                } else {
+                } else
+
+                {
 
 
                     saveHotelInDatabase(
@@ -180,29 +191,29 @@ class HotelForm : Fragment() {
 //    }
 
 
-    private val ActivityResultLauncher = registerForActivityResult<Intent, ActivityResult>(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result: ActivityResult ->
-        if (result.resultCode == AppCompatActivity.RESULT_OK) {
-            val uri = result.data!!.data
-            try {
-                val inputStream = activity?.contentResolver?.openInputStream(uri!!)
-                val myBitmap = BitmapFactory.decodeStream(inputStream)
-                val stream = ByteArrayOutputStream()
-                myBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                val bytes = stream.toByteArray()
-                hotelImage = android.util.Base64.encodeToString(bytes, android.util.Base64.DEFAULT)
-                binding.UploadsImageView.setImageBitmap(myBitmap)
-                inputStream!!.close()
-                Toast.makeText(activity, "Image Selected", Toast.LENGTH_SHORT).show()
+//    private val ActivityResultLauncher = registerForActivityResult<Intent, ActivityResult>(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) { result: ActivityResult ->
+//        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+//            val uri = result.data!!.data
+//            try {
+//                val inputStream = activity?.contentResolver?.openInputStream(uri!!)
+//                val myBitmap = BitmapFactory.decodeStream(inputStream)
+//                val stream = ByteArrayOutputStream()
+//                myBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+//                val bytes = stream.toByteArray()
+//                hotelImage = android.util.Base64.encodeToString(bytes, android.util.Base64.DEFAULT)
+//                binding.UploadsImageView.setImageBitmap(myBitmap)
+//                inputStream!!.close()
+//                Toast.makeText(activity, "Image Selected", Toast.LENGTH_SHORT).show()
+//
+//            } catch (ex: Exception) {
+//                Toast.makeText(activity, ex.message.toString(), Toast.LENGTH_SHORT).show()
+//            }//end try-catch block
+//        }//end if
 
-            } catch (ex: Exception) {
-                Toast.makeText(activity, ex.message.toString(), Toast.LENGTH_SHORT).show()
-            }//end try-catch block
-        }//end if
 
-
-    }
+//    }
 
     private fun resetInputFieldsAfterSubmission() {
 
@@ -219,6 +230,35 @@ class HotelForm : Fragment() {
         binding.UploadsImageView.setImageDrawable(myDrawable)
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            if (data != null && data.data != null) {
+                val imageUri = data.data
+                if (imageUri != null) {
+                    val imageRef = storageReference.child("hotelImages/${hotelName}_${System.currentTimeMillis()}.jpg")
+                    val uploadTask = imageRef.putFile(imageUri)
+                    uploadTask.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                                hotelImage = uri.toString()
+                                binding.UploadsImageView.setImageURI(uri)
+                            }.addOnFailureListener { exception ->
+                                Toast.makeText(requireContext(), "Failed to upload image: ${exception.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(requireContext(), "Failed to upload image: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Failed to get image URI", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Failed to get image data", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
 
 }

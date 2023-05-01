@@ -51,6 +51,10 @@ class hotelListPage : AppCompatActivity() {
                             intent.putExtra("hotelPhone",hotelArrayList[position].hotelPhone)
                             intent.putExtra("hotelPrice",hotelArrayList[position].hotelPrice)
                             intent.putExtra("hotelDistrict",hotelArrayList[position].hotelDistrict)
+                            intent.putExtra("hotelImage", hotelArrayList[position].hotelImage)
+
+
+
 
 
                             startActivity(intent)
@@ -70,3 +74,4 @@ class hotelListPage : AppCompatActivity() {
         })
     }
 }
+

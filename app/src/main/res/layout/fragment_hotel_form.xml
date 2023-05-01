@@ -22,7 +22,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="376dp"
-        android:layout_height="600dp"
+        android:layout_height="650dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="30px"
         android:backgroundTint="@color/teal_200"
@@ -34,21 +34,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp"
-            >
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/HR_topic"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="86dp"
                 android:text="Hotel Registartion"
 
                 android:textSize="34sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/HR_nameTopic"
@@ -56,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Hotel Name"
+
                 android:textSize="@dimen/HR_listNames"
                 android:textStyle="bold" />
 
@@ -63,16 +62,10 @@
                 android:id="@+id/hotelName"
 
                 android:layout_width="300dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:ems="10"
-
-                android:textColor="#807B7B"
-                android:textColorHint="#716E6E"
-                android:textSize="10sp"
-
-                android:inputType="textPersonName"
- />
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/HR_addressTopic"
@@ -81,18 +74,18 @@
                 android:layout_marginTop="7dp"
                 android:text="Hotel Address"
                 android:textSize="@dimen/HR_listNames"
+
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/hotelAddress"
                 android:layout_width="300dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                android:textColor="#807B7B"
-                android:textColorHint="#716E6E"
-                android:textSize="20sp" />
+
+                />
 
             <TextView
                 android:id="@+id/HR_emailTopic"
@@ -105,10 +98,9 @@
             <EditText
                 android:id="@+id/hotelEmail"
                 android:layout_width="300dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
-
 
 
             <LinearLayout
@@ -136,23 +128,24 @@
 
             <LinearLayout
                 android:layout_width="305dp"
-                android:layout_height="27dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/hotelPhone"
                     android:layout_width="154dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="phone" />
 
                 <EditText
                     android:id="@+id/hotelPrice"
                     android:layout_width="154dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="number" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="305dp"
                 android:layout_height="wrap_content"
@@ -183,12 +176,12 @@
                 <Button
                     android:id="@+id/uploadSomePicturesButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="100px"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="20px"
                     android:layout_marginTop="20px"
                     android:backgroundTint="@color/teal_700"
-                    android:text="Upload"
-                    android:paddingLeft="10dp" />
+                    android:paddingLeft="10dp"
+                    android:text="Upload" />
 
                 <ImageView
                     android:id="@+id/UploadsImageView"

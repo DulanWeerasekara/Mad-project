@@ -1,5 +1,6 @@
 package com.example.hotel
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+
 
 class hotelListAdapter(private val hotelList: ArrayList<HotelData>)
     :RecyclerView.Adapter<hotelListAdapter.hotelListViewHolder>(){
@@ -46,7 +49,8 @@ class hotelListAdapter(private val hotelList: ArrayList<HotelData>)
         holder.hotelDistrict.text=currentItem.hotelDistrict
 
         holder.hotelPrice.text=currentItem.hotelPrice
-        holder.hotelImage.setImageBitmap(createImageBitMap((currentItem.hotelImage)))
+        Glide.with(holder.itemView.context).load(currentItem.hotelImage)
+            .into(holder.hotelImage)
     }
 
     class hotelListViewHolder (itemView : View,clickListener: onItemClickListener) :RecyclerView.ViewHolder(itemView){
