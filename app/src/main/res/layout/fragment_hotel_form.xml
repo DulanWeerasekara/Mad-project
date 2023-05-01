@@ -16,11 +16,14 @@
 
         />
 
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="376dp"
         android:layout_height="600dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="30px"
+
        >
 
         <LinearLayout
@@ -84,7 +87,7 @@
                 android:inputType="textPostalAddress"
                 android:textColor="#807B7B"
                 android:textColorHint="#716E6E"
-                android:textSize="10sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/HR_emailTopic"

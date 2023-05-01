@@ -1,6 +1,7 @@
 package com.example.hotel
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,9 +30,9 @@ class HotelForm : Fragment() {
         savedInstanceState: Bundle?
 
 
-
-
+    
     ): View? {
+        //
         // Inflate the layout for this fragment
         binding=FragmentHotelFormBinding.inflate(layoutInflater)
         return binding.root
@@ -44,13 +45,36 @@ class HotelForm : Fragment() {
         hotelName= myBundle?.getString("hotelName").toString()
 
         binding.hotelRegButton.setOnClickListener{
+
+
+
+
             hotelName=binding.hotelName.text.toString()
             hotelAddress=binding.hotelAddress.text.toString()
             hotelEmail=binding.hotelEmail.text.toString()
             hotelPhone=binding.hotelPhone.text.toString()
             hotelPrice=binding.hotelPrice.text.toString()
 
-            saveHotelInDatabase(hotelName,hotelAddress,hotelEmail,hotelPhone,hotelPrice)
+            if(TextUtils.isEmpty(hotelName.toString())){
+                Toast.makeText(activity, "Please Enter All Details", Toast.LENGTH_SHORT).show()
+
+            }else
+            if(TextUtils.isEmpty(hotelAddress.toString())){
+                Toast.makeText(activity, "Please Enter All Details", Toast.LENGTH_SHORT).show()
+
+            }else if(TextUtils.isEmpty(hotelEmail.toString())){
+                Toast.makeText(activity, "Please Enter All Details", Toast.LENGTH_SHORT).show()
+
+            }else if(TextUtils.isEmpty(hotelPhone.toString())){
+                Toast.makeText(activity, "Please Enter All Details", Toast.LENGTH_SHORT).show()
+
+            }else if(TextUtils.isEmpty(hotelPrice.toString())){
+                Toast.makeText(activity, "Please Enter All Details", Toast.LENGTH_SHORT).show()
+
+            }else
+            {
+
+            saveHotelInDatabase(hotelName,hotelAddress,hotelEmail,hotelPhone,hotelPrice)}
         }
 
     }
