@@ -14,10 +14,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var button1 = findViewById<Button>(R.id.button1)
+        var button2 = findViewById<Button>(R.id.button2)
+
 
         button1.setOnClickListener{
             val intent1= Intent(this, hotelListPage::class.java)
             startActivity(intent1)
+
+        }
+        button2.setOnClickListener{
+            val intent2= Intent(this, hotelBookListPage::class.java)
+            startActivity(intent2)
 
         }
 

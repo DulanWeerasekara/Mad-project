@@ -70,11 +70,11 @@ class hotelListAdapter(private val hotelList: ArrayList<HotelData>)
         }
 
     }
-    private fun createImageBitMap(image: String?): Bitmap {
-        var bytes=android.util.Base64.decode(image,android.util.Base64.DEFAULT)
-        var bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.size)
-
-        return bitmap
-    }
+//    private fun createImageBitMap(image: String?): Bitmap {
+//        var bytes=android.util.Base64.decode(image,android.util.Base64.DEFAULT)
+//        var bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.size)
+//
+//        return bitmap
+//    }
 
 }

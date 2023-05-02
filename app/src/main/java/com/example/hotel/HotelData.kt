@@ -6,5 +6,6 @@ data class HotelData(var hotelName : String?=null,
                      var hotelPhone : String?=null,
                      var hotelPrice : String?=null,
                      var hotelDistrict:String?=null,
-                     var hotelImage:String?=null
+                     var hotelImage:String?=null,
+
 )
