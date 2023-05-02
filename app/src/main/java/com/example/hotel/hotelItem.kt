@@ -128,6 +128,7 @@ class hotelItem : AppCompatActivity() {
         val hotelPhone=mDialogView.findViewById<EditText>(R.id.hotelPhone)
         val hotelPrice=mDialogView.findViewById<EditText>(R.id.hotelPrice)
         val hotelDistrict=mDialogView.findViewById<EditText>(R.id.hotelDistrict)
+        val UploadsImageView=mDialogView.findViewById<ImageView>(R.id.UploadsImageView)
         val btnSelectImage = mDialogView.findViewById<Button>(R.id.btnSelectImage)
 
         val btnUpdateData=mDialogView.findViewById<Button>(R.id.btnUpdateData)
@@ -140,6 +141,10 @@ class hotelItem : AppCompatActivity() {
         hotelPhone.setText(intent.getStringExtra("hotelPhone").toString())
         hotelPrice.setText(intent.getStringExtra("hotelPrice").toString())
         hotelDistrict.setText(intent.getStringExtra("hotelDistrict").toString())
+        val hotelImageUrl = intent.getStringExtra("hotelImage")
+        Glide.with(this)
+            .load(hotelImageUrl)
+            .into(UploadsImageView)
 
 
 
@@ -163,6 +168,7 @@ class hotelItem : AppCompatActivity() {
                 hotelPhone.text.toString(),
                 hotelPrice.text.toString(),
                 hotelDistrict.text.toString(),
+                hotelImageUrl.toString()
             )
             Toast.makeText(applicationContext,"Data Updated",Toast.LENGTH_LONG).show()
 
@@ -185,11 +191,12 @@ class hotelItem : AppCompatActivity() {
         hotelEmail:String,
         hotelPhone: String,
         hotelPrice:String,
-        hotelDistrict:String
+        hotelDistrict:String,
+        hotelImage:String
     ){
 
         val dbRef= FirebaseDatabase.getInstance().getReference("Hotel").child(hotelName)
-        val hoteldata=HotelData(hotelName,hotelAddress,hotelEmail,hotelPhone,hotelPrice,hotelDistrict)
+        val hoteldata=HotelData(hotelName,hotelAddress,hotelEmail,hotelPhone,hotelPrice,hotelDistrict,hotelImage)
         dbRef.setValue(hoteldata)
 
     }

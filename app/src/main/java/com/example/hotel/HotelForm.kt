@@ -17,6 +17,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.hotel.databinding.FragmentHotelFormBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -34,6 +35,7 @@ class HotelForm : Fragment() {
     lateinit var hotelPrice: String
     lateinit var hotelDistrict: String
     lateinit var hotelImage: String
+
 
     var uri:Uri?=null
 
@@ -256,6 +258,7 @@ class HotelForm : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Failed to get image data", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 
